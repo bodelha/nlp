@@ -1,0 +1,51 @@
+version: "3.1"
+
+nlu:
+- intent: saudacao
+  examples: |
+    - oi
+    - olá
+    - bom dia
+    - boa tarde
+    - boa noite
+    - I ae?
+- intent: despedida
+  examples: |
+    - tchau
+    - até logo
+    - até mais
+- intent: perguntar_tempo
+  examples: |
+    - como está o tempo hoje?
+    - qual a previsão do tempo para amanhã?
+    - vai chover hoje?
+    - está quente hoje?
+- intent: perguntar_capital_brasil
+  examples: |
+    - qual a capital do Brasil?
+    - qual a capital do país?
+- intent: perguntar_descobrimento_brasil
+  examples: |
+    - quem descobriu o Brasil?
+- intent: perguntar_sobre_sistema_solar
+  examples: |
+    - qual o maior planeta do sistema solar?
+- intent: perguntar_aluno
+  examples: |
+    - qual a melhor turma de DSM da FATEC?
+- intent: pedir_piada
+  examples: |
+    - me conte uma piada
+    - você conhece alguma piada?
+    - quero ouvir uma piada
+- intent: agradecer
+  examples: |
+    - obrigado
+    - obrigada
+    - valeu
+    - agradeço
+- intent: breakage
+  examples: |
+    - como se ganha dinheiro com cashback
+    - me fale sobre breakage
+    - o que acontece quando um cashback expira
