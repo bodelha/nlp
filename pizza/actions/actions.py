@@ -1,36 +1,22 @@
-# from typing import Any, Text, Dict, List
+from typing import Any, Text, Dict, List
 
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
 
+class ActionColetarInformacoesPedido(Action):
+    def name(self) -> Text:
+        return "action_coletar_informacoes_pedido"
 
-# class ActionResponderCapital(Action):
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-#     def name(self) -> Text:
-#         return "action_responder_capital"
+        tamanho = tracker.get_slot("tamanho")
+        sabor = tracker.get_slot("sabor")
 
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        if tamanho and sabor:
+            dispatcher.utter_message(text=f"Seu pedido é uma pizza {tamanho} de {sabor}. Confirma?")
+        else:
+            dispatcher.utter_message(text="Para finalizar o pedido, por favor, informe o tamanho e o sabor da pizza.")
 
-#         pais = tracker.get_slot("pais")
-
-#         capitais = {
-#             "brasil": "Brasília",
-#             "portugal" : "Lisboa",
-#             "argentina" : "Buenos Aires",
-#             "japão" : "Tokio",
-#             "alemanha" : "Berlim"
-#         }
-
-#         if pais:
-#             pais_lower = pais.lower()
-#             if pais_lower in capitais:
-#                 capital = capitais[pais_lower]
-#                 dispatcher.utter_message(text=f"A capital de {pais} é {capital}.")
-#             else:
-#                 dispatcher.utter_message(response="utter_capital_nao_sei")
-#         else:
-#             dispatcher.utter_message(text="Não entendi a pergunta, poderia repetir?")
-        
-#         return []
+        return []

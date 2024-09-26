@@ -1,17 +1,24 @@
 version: "3.1"
 
 rules:
-- rule: Responder a saudações
-  steps:
-  - intent: saudacao
-  - action: utter_saudacao
+  - rule: Responder a saudações
+    steps:
+    - intent: saudacao
+    - action: utter_saudacao
 
-- rule: Responder a despedidas
-  steps:
-  - intent: despedida
-  - action: utter_despedida
+  - rule: Responder a despedidas
+    steps:
+    - intent: despedida
+    - action: utter_despedida
 
-- rule: Responder a agradecimentos
-  steps:
-  - intent: agradecer
-  - action: utter_agradecimento
+  - rule: Fazer um pedido
+    steps:
+    - intent: tamanho_pizza
+    - action: utter_tamanho_pizza
+    - slot_was_set:
+      - tamanho
+
+  - rule: Não entendi
+    steps:
+    - intent: out_of_scope
+    - action: utter_nao_entendi

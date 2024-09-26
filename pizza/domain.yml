@@ -4,16 +4,78 @@ intents:
   - saudacao
   - despedida
   - agradecer
+  - tamanho_pizza
+  - sabor_pizza
+  - borda_pizza
+  - cebola_pizza
+
+entities:
+  - tamanho
+  - sabor
+  - borda
+  - cebola
+
+slots:
+  tamanho:
+    type: categorical
+    values: 
+      - "6 pedaços"
+      - "8 pedaços"
+    mappings:
+      - type: from_entity
+        entity: tamanho
+    initial_value: "8 pedaços"
+  sabor:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: sabor
+  borda:
+    type: categorical
+    values: ["sim", "não"]
+    mappings:
+      - type: from_entity
+        entity: borda
+    initial_value: "não"
+  cebola:
+    type: categorical
+    values: ["sim", "não"]
+    mappings:
+      - type: from_entity
+        entity: cebola
+    initial_value: "não"
 
 responses:
   utter_saudacao:
-  - text: "Boa noite, como posso ajudar?"
+  - text: "Olá! Gostaria de fazer um pedido de pizza?"
+  
   utter_despedida:
-  - text: "Até logo! Tenha uma boa noite."
+  - text: "Até logo! Seu pedido será preparado com carinho."
+  
   utter_agradecimento:
-  - text: "Por nada, precisando é só perguntar."
+  - text: "De nada! Bom apetite!"
+  
+  utter_tamanho_pizza:
+  - text: "Qual o tamanho da pizza que você deseja? (Pequena, média, grande)"
+  
+  utter_sabor_pizza:
+  - text: "Qual o sabor da pizza? (Mussarela, calabresa, etc.)"
+  
+  utter_borda_pizza:
+  - text: "Deseja a pizza com borda recheada? (Sim/Não)"
+  
+  utter_cebola_pizza:
+  - text: "Deseja cebola na pizza? (Sim/Não)"
+  
+  utter_nao_entendi:
+  - text: "Desculpe, não entendi. Você pode reformular?"
 
 actions:
   - utter_saudacao
   - utter_despedida
   - utter_agradecimento
+  - utter_tamanho_pizza
+  - utter_sabor_pizza
+  - utter_borda_pizza
+  - utter_cebola_pizza
+  - utter_nao_entendi

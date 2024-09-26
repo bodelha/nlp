@@ -14,33 +14,37 @@ nlu:
     - tchau
     - até logo
     - até mais
-- intent: perguntar_tempo
-  examples: |
-    - como está o tempo hoje?
-    - qual a previsão do tempo para amanhã?
-    - vai chover hoje?
-    - está quente hoje?
-- intent: perguntar_capital_brasil
-  examples: |
-    - qual a capital do Brasil?
-    - qual a capital do país?
-- intent: perguntar_descobrimento_brasil
-  examples: |
-    - quem descobriu o Brasil?
-- intent: perguntar_sobre_sistema_solar
-  examples: |
-    - qual o maior planeta do sistema solar?
-- intent: perguntar_aluno
-  examples: |
-    - qual a melhor turma de DSM da FATEC?
-- intent: pedir_piada
-  examples: |
-    - me conte uma piada
-    - você conhece alguma piada?
-    - quero ouvir uma piada
 - intent: agradecer
   examples: |
     - obrigado
     - obrigada
     - valeu
     - agradeço
+- intent: tamanho_pizza
+  examples: |
+    - Quero uma pizza média
+    - A pizza grande é suficiente
+    - Quero pedir uma pizza pequena
+    - Pode ser uma pizza grande
+    - Qual o tamanho das pizzas?
+- intent: sabor_pizza
+  examples: |
+    - Quero uma pizza de mussarela
+    - Tem pizza de calabresa?
+    - Gosto de pizza de frango
+    - Quero pedir uma pizza de quatro queijos
+    - Pode ser marguerita
+- intent: borda_pizza
+  examples: |
+    - Quero a pizza com borda recheada
+    - Sem borda, por favor
+    - Não quero borda
+    - Com borda de catupiry
+    - Pizza sem borda
+- intent: cebola_pizza
+  examples: |
+    - Pode colocar cebola na pizza
+    - Sem cebola, por favor
+    - Eu quero cebola na pizza
+    - Não gosto de cebola
+    - Quero pizza sem cebola

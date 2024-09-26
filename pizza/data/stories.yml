@@ -1,15 +1,25 @@
 version: "3.1"
 
 stories:
-- story: fluxo_saudacao
-  steps:
-  - intent: saudacao
-  - action: utter_saudacao
-- story: fluxo_despedida
-  steps:
-  - intent: despedida
-  - action: utter_despedida
-- story: fluxo_agradecimento
-  steps:
-  - intent: agradecer
-  - action: utter_agradecimento
+  - story: pedido_simples
+    steps:
+      - intent: saudacao
+      - action: utter_saudacao
+      - intent: tamanho_pizza
+      - action: utter_tamanho_pizza
+      - slot_was_set:
+          - tamanho: "8 pedaços"
+      - intent: sabor_pizza
+      - action: utter_sabor_pizza
+      - slot_was_set:
+          - sabor: "mussarela"
+      - intent: borda_pizza
+      - action: utter_borda_pizza
+      - slot_was_set:
+          - borda: "não"
+      - intent: cebola_pizza
+      - action: utter_cebola_pizza
+      - slot_was_set:
+          - cebola: "sim"
+      - intent: agradecer
+      - action: utter_agradecimento
