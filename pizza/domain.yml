@@ -3,12 +3,6 @@ version: "3.1"
 intents:
   - saudacao
   - despedida
-  - perguntar_tempo
-  - perguntar_aluno
-  - perguntar_capital_brasil
-  - perguntar_descobrimento_brasil
-  - perguntar_sobre_sistema_solar
-  - pedir_piada
   - agradecer
 
 responses:
@@ -16,29 +10,10 @@ responses:
   - text: "Boa noite, como posso ajudar?"
   utter_despedida:
   - text: "Até logo! Tenha uma boa noite."
-  utter_resposta_tempo:
-  - text: "Não consigo informações sobre o tempo, talves em uma proxima atualização....."
-  utter_resposta_aluno:
-  - text: "A melhor turma do DSM da FATEC é o 6º."
-  utter_resposta_capital_brasil:
-  - text: "A capital do Brasil é Brasília."
-  utter_resposta_descobrimento_brasil:
-  - text: "O Brasil foi descoberto por Pedro Álvares Cabral em 1500."
-  utter_resposta_sobre_sistema_solar:
-  - text: "O maior planeta do sistema solar é Júpiter."
-  utter_piada:
-  - text: "Por a formiga tem 4 patas e não 5? Senão ela seria uma FIVEmiga!"
-  - text: "O que o pato disse para a pata? Vem quá!"
   utter_agradecimento:
   - text: "Por nada, precisando é só perguntar."
 
 actions:
   - utter_saudacao
   - utter_despedida
-  - utter_resposta_tempo
-  - utter_resposta_aluno
-  - utter_resposta_capital_brasil
-  - utter_resposta_descobrimento_brasil
-  - utter_resposta_sobre_sistema_solar
-  - utter_piada
   - utter_agradecimento
