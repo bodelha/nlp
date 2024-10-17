@@ -39,17 +39,19 @@ async def get_github_repositories(github_username: Text) -> Text:
         async with aiohttp.ClientSession() as session:
             url = f"https://api.github.com/users/{github_username}/repos"
             async with session.get(url) as response:
+                print(response.status)
                 if response.status == 200:
                     github_repositories = await response.json()
+                    print("dacuyd", github_repositories)
                     if not github_repositories:
-                        return f"Sem repositorios"
+                        return f"Sem repositórios"
 
-                    
                     repo_messages = []
                     for github_repositorie in github_repositories[:5]:
                         repo_name = github_repositorie["name"] 
                         languages_url = github_repositorie["languages_url"]
                         async with session.get(languages_url) as languages_response:
+                            print("vauyfpdv", languages)
                             if languages_response.status == 200:
                                 languages = await languages_response.json()
                                 if languages:
@@ -59,13 +61,16 @@ async def get_github_repositories(github_username: Text) -> Text:
                                     repo_messages.append(f"- {repo_name} (linguagem não detectada)")
                             else:
                                 repo_messages.append(f"- {repo_name} (erro ao obter linguagem)")
+                    if len(github_repositories) > 5:
+                        repo_messages.append("E mais outros repositórios")
 
-                    return f"Alguns repositorios de {github_username}:\n\n" + "\n".join(repo_messages)  #não tinha colocado o join                            
+                    return f"Alguns repositórios de {github_username}:\n\n" + "\n".join(repo_messages)
+                elif response.status == 403:
+                    return f"Erro 403: Acesso à API do GitHub bloqueado. Tente novamente mais tarde. Pode ter atingido o limite de requisições."
+                elif response.status == 404:
+                    return f"Desculpe, não encontrei o usuário {github_username} no GitHub."
                 else:
-                    if response.status == 404:
-                        return f"Desculpe, não encontrei o usuário {github_username} no GitHub."
-                    else:
-                        return f"Erro ao acessar a API do GitHub."
+                    return f"Erro ao acessar a API do GitHub."
     except aiohttp.ClientError as e:
         return f"Erro na requisição à API do GitHub: {e}"
     except json.JSONDecodeError as e:
