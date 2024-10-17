@@ -2,12 +2,20 @@ version: "3.1"
 
 rules:
 
-- rule: Say goodbye anytime the user says goodbye
+- rule: Activate form
   steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - intent: github_repositories
+  - action: utter_github_username
+  - action: github_form # Ativando o formulário
+  - active_loop: github_form # Loop ativo
 
-- rule: Say 'I am a bot' anytime the user challenges
+- rule: Submit form
+  condition:
+  - active_loop: github_form
   steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
+  - action: github_form
+  - active_loop: null # Desativa o loop
+  - slot_was_set: # Slot definido
+    - requested_slot: null # Slot solicitado = null, formulario foi preenchido
+  - action: action_get_github_repositories
+  - action: utter_finalizar # Mensagem para finalizar
