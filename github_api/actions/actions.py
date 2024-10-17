@@ -27,7 +27,6 @@ class ActionGetGithubRepositoriesForm(Action):
             return [AllSlotsReset()]
         else:
             github_repositories = await get_github_repositories(github_username)
-            print("fodvt", github_repositories)
             dispatcher.utter_message(
                 response='utter_github_response', repositories=github_repositories)
             return [AllSlotsReset()]
@@ -39,10 +38,8 @@ async def get_github_repositories(github_username: Text) -> Text:
         async with aiohttp.ClientSession() as session:
             url = f"https://api.github.com/users/{github_username}/repos"
             async with session.get(url) as response:
-                print(response.status)
                 if response.status == 200:
                     github_repositories = await response.json()
-                    print("dacuyd", github_repositories)
                     if not github_repositories:
                         return f"Sem repositórios"
 
@@ -51,7 +48,6 @@ async def get_github_repositories(github_username: Text) -> Text:
                         repo_name = github_repositorie["name"] 
                         languages_url = github_repositorie["languages_url"]
                         async with session.get(languages_url) as languages_response:
-                            print("vauyfpdv", languages)
                             if languages_response.status == 200:
                                 languages = await languages_response.json()
                                 if languages:
