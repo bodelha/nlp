@@ -4,8 +4,8 @@ config:
   store_entities_as_slots: true
 
 intents:
-  - saudacao # Padrão
-  - github_repositories # Padrão
+  - saudacao
+  - github_repositories
 
 actions:
   - action_get_github_repositories # Action personalizada
@@ -24,10 +24,21 @@ slots:
       - active_loop: github_form
         requested_slot: github_username
 
+  # segundo slot
+  linguagem:
+    type: text
+    mappings:
+    - type: from_text
+      conditions:
+      - active_loop: github_form
+        requested_slot: linguagem
+  # fim da adição
+
 forms:
   github_form:
     required_slots:
       - github_username
+      - linguagem
 
 
 # continua parecido com os demais projetos
@@ -38,9 +49,12 @@ responses:
 
   utter_github_username:
   - text: "Qual o nome do usuário do Git?"
-    
+  
+  utter_github_response:  
+  - text: "Aqui estão os repositorios de {github_username}:\n\n{repositories}"
 
   utter_finalizar:
   - text: "Estão todos ai, obrigado por perguntar"
 
-  
+  utter_ask_linguagem:
+  - text: "Qual linguagem você deseja?"
